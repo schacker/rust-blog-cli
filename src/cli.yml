@@ -1,0 +1,20 @@
+name: RustWriter
+version: "0.2.0"
+author: dev-tang.com <dev-tang@outlook.com>
+about: Simple, free and happy
+subcommands:
+    - new:
+        about: new project
+        args:
+            - PROJECT:
+                help: project name
+                required: true
+                index: 1
+    - build:
+          about: build project
+#          args:
+#              - force
+#                    short: f
+#                    help: Force everything to compile, whether or not it has changed
+    - clean:
+        about: delete the files in the build directory
