@@ -9,11 +9,11 @@ name = "rsw"
 path = "src/main.rs"
 
 [dependencies]
-regex = "0.2"
-comrak = "0.6.2"
-clap = {version="2.29.0", features=["yaml"]}
+regex = "1.6.0"
+comrak = "0.14.0"
+clap = { version="3.2.22", features=["yaml"] }
 serde = { version = "1.0", features = ["derive"] }
-serde_yaml = "0.8"
+serde_yaml = "0.9.13"
 serde_derive = "1.0.104"
 toml = "0.5"
 chrono = "0.4.10"
