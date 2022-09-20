@@ -9,7 +9,7 @@ use std::process;
 use super::parse::{MdFile, MdHead};
 use super::util::*;
 
-use self::comrak::{ComrakOptions, markdown_to_html};
+use self::comrak::{ComrakOptions, ComrakExtensionOptions, ComrakRenderOptions, markdown_to_html};
 use self::regex::Regex;
 use super::site::Site;
 
@@ -25,8 +25,26 @@ pub fn render(site: &Site, public: &str, md_file: MdFile) {
 
     // 支持table解析
     let options = ComrakOptions {
-        ext_table: true,
-        unsafe_: true,
+        extension: ComrakExtensionOptions {
+            table: true,
+            strikethrough: true,
+            tagfilter: true,
+            autolink: true,
+            tasklist: true,
+            superscript: true,
+            header_ids: Some("user-content-".to_string()),
+            footnotes: true,
+            description_lists: true,
+            front_matter_delimiter: Some("---".to_owned()),
+        },
+        render: ComrakRenderOptions {
+            hardbreaks: false,
+            github_pre_lang: true,
+            width: ComrakRenderOptions::default().width,
+            unsafe_: ComrakRenderOptions::default().unsafe_,
+            escape: true,
+            list_style: ComrakRenderOptions::default().list_style,
+        },
         ..ComrakOptions::default()
     };
 
