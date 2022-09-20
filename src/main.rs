@@ -13,7 +13,6 @@ use rsw::template;
 use rsw::util::*;
 use chrono::Utc;
 use rsw::site::Site;
-use serde::export::Option::Some;
 /**
  * 解析目标项目rsw.toml配置文件
  * 解析符合规范的Site配置
