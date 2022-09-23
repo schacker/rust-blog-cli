@@ -6,7 +6,7 @@
     - 下载源代码
 	```
 	git clone https://github.com/schacker/rust-blog-cli.git
-	cd rsw
+	cd rust-blog-cli
 	```
     - 编译代码
 	```
