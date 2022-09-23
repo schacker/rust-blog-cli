@@ -8,7 +8,9 @@ use std::process;
 use std::time::SystemTime;
 
 use self::regex::Regex;
-
+/**
+ * 创建文件
+ */
 pub fn create_not_exists(dir: &str) {
     if !Path::new(dir).exists() {
         match fs::create_dir_all(dir) {
@@ -17,8 +19,11 @@ pub fn create_not_exists(dir: &str) {
         };
     }
 }
-
+/**
+ * 写文件操作
+ */
 pub fn write_file(file_name: &str, content: &str) {
+    // 创建路径
     let index_md = Path::new(&file_name);
     let mut file_index_md = match File::create(index_md) {
         Err(why) => panic!("create {}: {}", file_name, why.to_string()),
@@ -54,6 +59,7 @@ static HTML_STR: &str = r#"<!DOCTYPE html>
 </html>"#;
 
 pub fn init_work_space(project_name: &str, public_dir: &str, src_dir: &str) {
+    // 声明项目路径
     let path = Path::new(project_name);
     if path.exists() {
         println!("{} exists", project_name);
@@ -66,12 +72,14 @@ pub fn init_work_space(project_name: &str, public_dir: &str, src_dir: &str) {
 
     let index_md_name = format!("{}/{}", &project_src, "index.md");
     let re_project = Regex::new(r"\{\{\s*project\s*\}\}").unwrap();
+    // 根据{{ project }} 正则匹配替换 MD_STR
     let md_text = String::from(re_project.replace_all(MD_STR, project_name));
+    // 将生成的md内容写入到index.md
     write_file(&index_md_name, &md_text);
+    // public 路径下写入HTML_STR内容到__index.html
     let index_tpl_name = format!("{}/{}", &project_public, "__index.html");
-
     write_file(&index_tpl_name, HTML_STR);
-
+    // 填充rsw.toml配置文件
     write_file(&format!("{}/{}", project_name, "rsw.toml"), &format!("site_name = \"{}\"\nsite_url=\"http://localhost\"", project_name));
     println!("{} created successfully", project_name);
 }
@@ -94,7 +102,9 @@ pub fn mtime(path_str: &str) -> std::result::Result<u64, std::io::Error> {
     };
     Ok(secs)
 }
-
+/**
+ * 根据源文件修改时间 & 目标文件修改时间，判断是否时间先后
+ */
 pub fn skip(src_file: &str, target_file: &str) -> bool {
     // 源文件最后修改时间
     let src_mtime = mtime(src_file).unwrap_or(0);

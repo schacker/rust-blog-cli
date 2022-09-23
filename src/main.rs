@@ -78,8 +78,8 @@ fn loop_parse(site: &Site, build: &str, public: &str, src: &str) {
     // 递归方式列出所有的源文件
     for entry in fs::read_dir(path).expect("Failed to read src directory") {
         if let Ok(entry) = entry {
-            let child = entry.path();
-            let file_name = child.to_str().unwrap();
+            let child = entry.path(); // 获取path
+            let file_name = child.to_str().unwrap(); // 获取filename
             if child.is_file() {
                 let re_md_file = Regex::new(r".*\.md$").unwrap();
                 if !re_md_file.is_match(file_name) {
