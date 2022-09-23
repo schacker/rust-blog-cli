@@ -1,6 +1,6 @@
 name: RustWriter
 version: "0.2.0"
-author: dev-tang.com <dev-tang@outlook.com>
+author: huangwei
 about: Simple, free and happy
 subcommands:
     - new:
