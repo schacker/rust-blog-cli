@@ -1,6 +1,9 @@
 extern crate clap;
+extern crate rsw;
+extern crate toml;
+extern crate regex;
 
-use std::fs;
+use std::{fs};
 use std::path::Path;
 use std::process;
 
@@ -137,8 +140,7 @@ static SRC_DIR: &str = "src";
 
 fn main() {
 	let start_time = Utc::now().timestamp_millis() as f64;
-	let path = format!("./src/cli.yml");
-	let yaml_data = fs::read_to_string(path).expect("Unable to read file");
+	let yaml_data = export_cliyml();
 	let config: AppConfig = serde_yaml::from_str(&yaml_data).expect("Unable to parse YAML data");
 
 	// Use the parsed config to set up the command-line parser with clap

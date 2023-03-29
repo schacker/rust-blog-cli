@@ -122,3 +122,23 @@ pub fn md_to_html_ext(file_name: &str) -> String {
     format!("{}{}", names[1], ".html")
 }
 
+pub fn export_cliyml() -> String {
+    format!("
+    name: RustWriter
+    version: \"0.2.0\"
+    author: huangwei
+    about: Simple, free and happy
+    subcommands:
+        - new:
+            about: new project
+            args:
+                - project:
+                    help: project name
+                    required: true
+                    index: 1
+        - build:
+            about: build project
+        - clean:
+            about: delete the files in the build directory")
+}
+
