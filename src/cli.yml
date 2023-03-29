@@ -6,15 +6,11 @@ subcommands:
     - new:
         about: new project
         args:
-            - PROJECT:
+            - project:
                 help: project name
                 required: true
                 index: 1
     - build:
-          about: build project
-#          args:
-#              - force
-#                    short: f
-#                    help: Force everything to compile, whether or not it has changed
+        about: build project
     - clean:
         about: delete the files in the build directory
