@@ -140,8 +140,9 @@ static SRC_DIR: &str = "src";
 
 fn main() {
 	let start_time = Utc::now().timestamp_millis() as f64;
-	let yaml_data = export_cliyml();
-	let config: AppConfig = serde_yaml::from_str(&yaml_data).expect("Unable to parse YAML data");
+	// let yaml_data = export_cliyml();
+	const YAML_DATA: &str = include_str!("../assets/cli.yml");
+	let config: AppConfig = serde_yaml::from_str(&YAML_DATA).expect("Unable to parse YAML data");
 
 	// Use the parsed config to set up the command-line parser with clap
 	let mut app = Command::new(config.name)

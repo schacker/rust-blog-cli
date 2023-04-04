@@ -45,6 +45,7 @@ pub fn render(site: &Site, public: &str, md_file: MdFile) {
             escape: true,
             list_style: ComrakRenderOptions::default().list_style,
             full_info_string: false,
+            sourcepos: false,
         },
         ..ComrakOptions::default()
     };
