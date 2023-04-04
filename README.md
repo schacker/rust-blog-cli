@@ -17,7 +17,7 @@
 	sudo cp target/release/rsw /usr/local/bin/
 	```
 2.  二进制方式安装
-    - 从 [release](https://github.com/tjz101/rsw/releases) 页面中下载对应平台的可执行文件压缩包解压后就可以使用。
+    - 从 [release](https://github.com/schacker/rust-blog-cli/releases) 页面中下载对应平台的可执行文件压缩包解压后就可以使用。
 	
     - 为方便使用，可以将rsw添加到环境变量中 或者 Linux系统将rsw文件放到/usr/local/bin，Windows系统将rsw.exe放到C:\Windows\System32中。
 
